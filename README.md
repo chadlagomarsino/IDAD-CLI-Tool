@@ -28,7 +28,7 @@ This will search IDAD-Toolkit/geodata/input for a csv file, read that file, and 
 
 This will search IDAD-Toolkit/geodata/output for a csv file, read that file, and then write a new CSV file to IDAD-Toolkit/geodata/input
 
-## Connecting to PostgreSQL 
+## Connecting to PostgreSQL
 
 ## Connecting to SAS Visual Analytics 
 
