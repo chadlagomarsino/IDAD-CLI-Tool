@@ -21,55 +21,6 @@ module.exports = {
   },
   reverseGoogle: function(body) {
 
-    // function getAddressObject(address_parts) {
-    //   console.log("running function")
-    //   var ShouldBeComponent = {
-    //     parsed_home: ["street_number"],
-    //     parsed_postal_code: ["postal_code"],
-    //     parsed_street: ["street_address", "route"],
-    //     parsed_region: [
-    //       "administrative_area_level_1",
-    //       "administrative_area_level_2",
-    //       "administrative_area_level_3",
-    //       "administrative_area_level_4",
-    //       "administrative_area_level_5"
-    //     ],
-    //     parsed_city: [
-    //       "locality",
-    //       "sublocality",
-    //       "sublocality_level_1",
-    //       "sublocality_level_2",
-    //       "sublocality_level_3",
-    //       "sublocality_level_4"
-    //     ],
-    //     parsed_country: ["country"]
-    //   };
-
-    //   var parsed_address = {
-    //     parsed_home: "",
-    //     parsed_postal_code: "",
-    //     parsed_street: "",
-    //     parsed_region: "",
-    //     parsed_city: "",
-    //     parsed_country: ""
-    //   };
-    //   address_parts.forEach(component => {
-    //     for (var shouldBe in ShouldBeComponent) {
-    //       if (ShouldBeComponent[shouldBe].indexOf(component.types[0]) !== -1) {
-    //         if (shouldBe === "parsed_country") {
-    //           address[shouldBe] = component.short_name;
-    //         } else {
-    //           address[shouldBe] = component.long_name;
-    //         }
-    //       }
-    //     }
-    //   });
-    //   console.log(parsed_address)
-    //   return {
-    //     parsed_address
-    //   }
-    // }
-
     let response = JSON.parse(body)
 
     // //console.log(`response: ${response}`)
@@ -80,6 +31,14 @@ module.exports = {
     //Success, return objects
     if (response.results && response.results.length) {
 
+      let parsed_street_number = ''
+      for (var i = 0; i < response.results[0].address_components.length; i++) {
+        for (var j = 0; j < response.results[0].address_components[i].types.length; j++) {
+          if (response.results[0].address_components[i].types[j] == "street_number") {
+            parsed_street_number = response.results[0].address_components[i].long_name;
+          }
+        }
+      }
       let parsed_street = ''
       for (var i = 0; i < response.results[0].address_components.length; i++) {
         for (var j = 0; j < response.results[0].address_components[i].types.length; j++) {
@@ -122,7 +81,7 @@ module.exports = {
       }
 
       return {
-        street: parsed_street,
+        street: `${parsed_street_number} ${parsed_street}`,
         city: parsed_city,
         zipcode: parsed_zipcode,
         county: parsed_county,
