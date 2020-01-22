@@ -8,23 +8,25 @@ The defaults are configured for Google's geocoder but it can be configured to wo
 
 Make sure that you use this in compliance with the relevant API's terms of service.
 
-
 ## Installation 
 
-1. Install NodeJS and IDE of choice 
+1. Install NodeJS and code editor of choice 
 2. Download IDAD-CLI-Tool Folder and All Subfolder Directories 
 3. Use the terminal to navigate to the IDAD-CLI-Tool folder and run the command `npm init` to initalize npm in project folder. This will install node depenency modules for the main app under the node modules directory. 
 
-## Input/Output CSV Files
-
-1. This tool will batch geocode a CSV file line by line. When forward geocoding, the tool will search 
-
 ## Commands 
 
-Enter the following command from the project folder to run the geocoding utilities of the application
+Enter the following commands from the project folder to run the geocoding utilities of the application
 
+### Forward Geocoding
+`node app.js geo --inputcsv="yourCSVFileNameHere"`
 
-`node app.js
+This will search IDAD-Toolkit/geodata/input for a csv file, read that file, and then write a new CSV file to IDAD-Toolkit/geodata/output
+
+### Reverse Geocoding 
+`node app.js rgeo --inputcsv="yourCSVFileNameHere"`
+
+This will search IDAD-Toolkit/geodata/output for a csv file, read that file, and then write a new CSV file to IDAD-Toolkit/geodata/input
 
 ## Connecting to PostgreSQL 
 
