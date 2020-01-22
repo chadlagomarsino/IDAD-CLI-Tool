@@ -11,6 +11,8 @@
 
 ## Commands 
 
-## Code Architecture 
+## Connecting to PostgreSQL 
+
+## Connecting to SAS Visual Analytics 
 
 Questions? Contact Chad Lagomarsino at chadlagomarsino@github.com or chadlagomarsino74@gmail.com 
